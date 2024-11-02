@@ -7,8 +7,8 @@ import streamlit as st
 import os
 
 # Retrieve the API key from environment variable
+# data = os.environ["API_KEY"]
 data = st.secrets["API_KEY"]
-
 # Configure the API key for Google Generative AI
 configure(api_key=data)
 
