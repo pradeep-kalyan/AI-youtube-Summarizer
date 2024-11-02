@@ -3,9 +3,13 @@ from google.generativeai import GenerativeModel, configure
 from youtube_transcript_api import YouTubeTranscriptApi
 import re
 import streamlit as st
+import os
+
+# Retrieve the API key from environment variable
+data = os.environ["API_KEY"]
 
 # Configure the API key for Google Generative AI
-configure(api_key="AIzaSyC52FvUOSiLE-KnHLRBhjLdMVtdMCq3Ei0")
+configure(api_key=data)
 
 # Define generation configuration for the AI model
 generation_config = {
@@ -42,7 +46,6 @@ st.set_page_config(page_title="AI YouTube Summarizer", layout="wide")
 # Customize the sidebar
 with st.sidebar:
     st.title("AI YouTube Summarizer")
-    # st.image("https://example.com/your-logo.png", width=150)
     st.markdown("Powered by Google's Gemini-1.5-pro")
     st.markdown("### How it Works:")
     st.markdown("""
