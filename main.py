@@ -6,9 +6,8 @@ import re
 import streamlit as st
 import os
 
-load_dotenv("data.env")
 # Retrieve the API key from environment variable
-data = os.environ["API_KEY"]
+data = st.secrets["API_KEY"]
 
 # Configure the API key for Google Generative AI
 configure(api_key=data)
