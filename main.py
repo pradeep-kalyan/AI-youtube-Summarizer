@@ -65,7 +65,7 @@ if link:
     if st.button("Submit"):
         st.success("URL submitted successfully")
         try:
-            with st.spinner("Summarising...."):
+            with st.spinner("Summarizing...."):
                 # Retrieve the transcript using the transcription function
                 trans = transcription(link)
                 # Generate a summary using the AI model
