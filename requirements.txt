@@ -1,4 +1,4 @@
 streamlit
 google-generativeai
 youtube-transcript-api
-dot_env
+python-dotenv
