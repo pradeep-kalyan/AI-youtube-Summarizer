@@ -6,7 +6,7 @@ import re
 import streamlit as st
 import os
 
-load_dotenv()
+load_dotenv("data.env")
 # Retrieve the API key from environment variable
 data = os.environ["API_KEY"]
 
