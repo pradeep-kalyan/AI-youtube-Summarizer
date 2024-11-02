@@ -1,10 +1,12 @@
 # Import necessary libraries
 from google.generativeai import GenerativeModel, configure
 from youtube_transcript_api import YouTubeTranscriptApi
+from dotenv import load_dotenv
 import re
 import streamlit as st
 import os
 
+load_dotenv()
 # Retrieve the API key from environment variable
 data = os.environ["API_KEY"]
 
@@ -27,6 +29,7 @@ model = GenerativeModel(
     system_instruction="Using the transcript/data above, summarize the video/data in a crisp and clear manner. Ensure the data is understandable and format the data to provide it in points for better understanding.",
 )
 
+
 # Function to retrieve the transcript from a given YouTube link
 def transcription(link):
     # Use regex to extract video ID from the provided YouTube URL
@@ -40,6 +43,7 @@ def transcription(link):
     transcript = " ".join([line["text"] for line in transcript])
     return transcript  # Return the formatted transcript
 
+
 # Streamlit UI setup
 st.set_page_config(page_title="AI YouTube Summarizer", layout="wide")
 
@@ -48,16 +52,27 @@ with st.sidebar:
     st.title("AI YouTube Summarizer")
     st.markdown("Powered by Google's Gemini-1.5-pro")
     st.markdown("### How it Works:")
-    st.markdown("""
+    st.markdown(
+        """
     1. Enter your YouTube URL.
     2. Our AI processes the video transcript.
     3. Receive a concise, clear summary!
-    """)
+    """
+    )
 
 # Main layout
-st.markdown("<h1 style='text-align: center; color: #4CAF50;'>AI YouTube Summarizer</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center; color: #0d47a1;'>Summarize YouTube videos with ease!</h3>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; font-size: 18px;'>Get a quick and accurate summary of any YouTube video. Simply paste the link below and hit 'Submit'.</p>", unsafe_allow_html=True)
+st.markdown(
+    "<h1 style='text-align: center; color: #4CAF50;'>AI YouTube Summarizer</h1>",
+    unsafe_allow_html=True,
+)
+st.markdown(
+    "<h3 style='text-align: center; color: #0d47a1;'>Summarize YouTube videos with ease!</h3>",
+    unsafe_allow_html=True,
+)
+st.markdown(
+    "<p style='text-align: center; font-size: 18px;'>Get a quick and accurate summary of any YouTube video. Simply paste the link below and hit 'Submit'.</p>",
+    unsafe_allow_html=True,
+)
 
 # Create a text input for the user to paste the YouTube URL
 link = st.text_input("Paste your YouTube URL here:")
